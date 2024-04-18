@@ -1,0 +1,8 @@
+
+{
+  "zone": "HDI",
+  "queueType": "",
+  "queue": "daily",
+  "jsonData": "{\"test\": \"test-JSON-Payload-beispiel2\"}",
+  "authData": ""
+}

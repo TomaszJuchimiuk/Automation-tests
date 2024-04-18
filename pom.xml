@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <developers>
+        <developer>
+            <name>Tomasz_Juchimiuk</name>
+            <email>tomasz.juchimiuk@capgemini.com</email>
+            <organization>Capgemini - Nearshore Test Center - Poland</organization>
+            <organizationUrl>http://nsc.capgemini.com/nearshoretestcenter</organizationUrl>
+        </developer>
+    </developers>
+
+    <artifactId>Automation-tests</artifactId>
+    <groupId>com.capgemini.imfvt</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <name>IMFVT API tests</name>
+    <description>automation-tests-project</description>
+
+
+    <properties>
+        <thread.count>10</thread.count>
+        <parallel.mode.default>concurrent</parallel.mode.default>
+        <parallel.mode.classes.default>concurrent</parallel.mode.classes.default>
+
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- MrChecker -->
+        <mrchecker.version>2023.10.10</mrchecker.version>
+
+        <!-- Maven -->
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
+        <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
+
+        <!-- Allure reporting -->
+        <allure.version>2.24.0</allure.version>
+        <allure.results.directory>${project.basedir}/target/allure-results</allure.results.directory>
+        <allure.report.directory>${project.basedir}/target/allure-report</allure.report.directory>
+        <surefire.report.directory>${project.basedir}/target/surefire-reports</surefire.report.directory>
+        <allure-maven.version>2.12.0</allure-maven.version>
+        <aspectj.version>1.9.20.1</aspectj.version>
+        <lombok.version>1.18.30</lombok.version>
+
+        <jackson.version>2.15.2</jackson.version>
+        <git-commit-id-version>4.9.10</git-commit-id-version>
+    </properties>
+
+    <dependencies>
+        <!-- Selenium module -->
+        <dependency>
+            <groupId>com.capgemini.mrchecker</groupId>
+            <artifactId>mrchecker-webapi-module</artifactId>
+            <version>${mrchecker.version}</version>
+        </dependency>
+        <!-- Need to have this to work with Allure-->
+        <dependency>
+            <!-- Test listener. Binds Junit exec to Allure annotation -->
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>4.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>2.7.15</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.32</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>1.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- CLEAN -->
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                    <configuration>
+                        <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                        <filesets>
+                            <fileset>
+                                <directory>target</directory>
+                                <includes>
+                                    <include>**</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>classes</exclude>
+                                    <exclude>test-classes</exclude>
+                                </excludes>
+                            </fileset>
+                            <fileset>
+                                <directory>logs</directory>
+                                <followSymlinks>false</followSymlinks>
+                            </fileset>
+                            <fileset>
+                                <directory>${allure.report.directory}</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${allure.results.directory}</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${surefire.report.directory}</directory>
+                            </fileset>
+                        </filesets>
+                    </configuration>
+                </plugin>
+                <!-- Maven report generator -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- COMPILE -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/cucumber/*.java</exclude>
+                    </excludes>
+                    <compilerArgument>-Xlint:deprecation</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <release>${maven.compiler.target}</release>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- EXECUTE TESTS -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/*.class</include>
+                    </includes>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                        -Xmx2048m -Xms1024m
+                        -Djdk.net.URLClassPath.disableClassPathURLCheck=true
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit5.AllureJunit5</value>
+                        </property>
+                        <configurationParameters>
+                            junit.jupiter.execution.parallel.enabled=true
+                            junit.jupiter.execution.parallel.mode.default=${parallel.mode.default}
+                            junit.jupiter.execution.parallel.mode.classes.default=${parallel.mode.classes.default}
+                            <!--                            junit.jupiter.execution.parallel.config.strategy=fixed-->
+                            <!--                            junit.jupiter.execution.parallel.config.fixed.parallelism=${thread.count}-->
+                            junit.jupiter.execution.parallel.config.strategy = custom
+                            junit.jupiter.execution.parallel.config.custom.class=com.capgemini.mrchecker.test.core.junit.CustomStrategy
+                            junit.jupiter.extensions.autodetection.enabled=true
+                            cucumber.publish.quiet=true
+                        </configurationParameters>
+                    </properties>
+                    <systemProperties>
+                        <!-- If -Dthread.count=X argument is not used then pom default value is passed to the project -->
+                        <thread.count>${thread.count}</thread.count>
+                    </systemProperties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- GENERATE ALLURE REPORT -->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                    <reportTimeout>6000</reportTimeout>
+                    <serveTimeout>6000</serveTimeout>
+                    <resultsDirectory>${allure.results.directory}</resultsDirectory>
+                    <reportDirectory>${allure.report.directory}</reportDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>${git-commit-id-version}</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>target/git.properties</generateGitPropertiesFilename>
+                    <includeOnlyProperties>
+                        <includeOnlyProperty>^git.branch$</includeOnlyProperty>
+                        <includeOnlyProperty>^git.commit.id.full$</includeOnlyProperty>
+                    </includeOnlyProperties>
+                    <commitIdGenerationMode>full</commitIdGenerationMode>
+                </configuration>
+            </plugin>
+            <!--OWASP dependency tool-->
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>7.3.0</version> <!-- Check for the latest version -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,1 @@
+{"uuid":"616cac44-7248-44af-8f98-3554f52b4986","name":"ImapLoadTest","children":["11021814-680b-4f15-a6d4-83c5ea2d2cff"],"befores":[{"name":"mySetUpClass","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1709897795024,"stop":1709897795031}],"afters":[],"start":1709897794953,"stop":1709898401380}

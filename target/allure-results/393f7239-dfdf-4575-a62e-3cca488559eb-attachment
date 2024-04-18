@@ -1,0 +1,10 @@
+2024-02-27 at 13:16:32 CET logAnalytics - Is analytics enabled: true
+2024-02-27 at 13:16:32 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - STARTED.
+2024-02-27 at 13:16:32 CET logInfo - [Allure Step Start] ::: Set properties for IMAP and SMTP connection
+2024-02-27 at 13:16:34 CET logInfo - [Allure Step Start] ::: Connect with the server for eakte-tests@outlook.com
+2024-02-27 at 13:21:06 CET logInfo - [Allure Step Start] ::: Forward email 5MB from eakte-tests@outlook.com to test_sender_api@outlook.com 1 times
+2024-02-27 at 13:21:06 CET logError - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest#forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - EXCEPTION in @Test: 554 5.2.0 STOREDRV.Submission.Exception:OutboundSpamException; Failed to process message due to a permanent exception with message [BeginDiagnosticData]WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade. OutboundSpamException: WASCL UserAction verdict is not None. Actual verdict is Suspend, ShowTierUpgrade.[EndDiagnosticData] [Hostname=GVXP195MB1661.EURP195.PROD.OUTLOOK.COM]
+
+2024-02-27 at 13:21:06 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - FINISHED.
+2024-02-27 at 13:21:06 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - DURATION: 4,57 min
+2024-02-27 at 13:21:06 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - FAILED.

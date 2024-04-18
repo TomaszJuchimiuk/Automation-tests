@@ -1,0 +1,11 @@
+2024-02-27 at 13:46:47 CET logAnalytics - Is analytics enabled: true
+2024-02-27 at 13:46:47 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - STARTED.
+2024-02-27 at 13:46:47 CET logDebug - env=ENV1
+2024-02-27 at 13:46:47 CET logInfo - Selected Environment: ENV1
+2024-02-27 at 13:46:47 CET logInfo - Selected Environment: ENV1
+2024-02-27 at 13:46:47 CET logInfo - [Allure Step Start] ::: Set properties for IMAP and SMTP connection
+2024-02-27 at 13:46:50 CET logInfo - [Allure Step Start] ::: Connect with the server for eakte-tests@outlook.com
+2024-02-27 at 13:46:50 CET logError - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest#forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - EXCEPTION in @Test: AUTHENTICATE failed.
+2024-02-27 at 13:46:50 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - FINISHED.
+2024-02-27 at 13:46:50 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - DURATION: 0,06 min
+2024-02-27 at 13:46:50 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 50 emails with 16KB attachment and check the emails are moved to target email/folder" - FAILED.

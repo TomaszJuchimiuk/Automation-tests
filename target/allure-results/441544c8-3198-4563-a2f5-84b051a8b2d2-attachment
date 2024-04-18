@@ -1,0 +1,13 @@
+2024-02-27 at 13:53:13 CET logAnalytics - Is analytics enabled: true
+2024-02-27 at 13:53:13 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 10 emails....." - STARTED.
+2024-02-27 at 13:53:13 CET logDebug - env=ENV1
+2024-02-27 at 13:53:13 CET logInfo - Selected Environment: ENV1
+2024-02-27 at 13:53:13 CET logInfo - Selected Environment: ENV1
+2024-02-27 at 13:53:13 CET logInfo - [Allure Step Start] ::: Set properties for IMAP and SMTP connection
+2024-02-27 at 13:53:15 CET logInfo - [Allure Step Start] ::: Connect with the server for test_sender_api@outlook.com
+2024-02-27 at 13:55:53 CET logInfo - [Allure Step Start] ::: Forward email 5MB from test_sender_api@outlook.com to test_sender_api@outlook.com 1 times
+2024-02-27 at 13:55:55 CET logInfo - [Allure Step Start] ::: Return the number of emails in the folder test
+2024-02-27 at 13:55:55 CET logError - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest#forward 10 emails....." - EXCEPTION in @Test: test not found
+2024-02-27 at 13:55:55 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 10 emails....." - FINISHED.
+2024-02-27 at 13:55:55 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 10 emails....." - DURATION: 2,70 min
+2024-02-27 at 13:55:55 CET logInfo - "com.capgemini.mrchecker.webapi.imap.ImapLoadTest:forward 10 emails....." - FAILED.

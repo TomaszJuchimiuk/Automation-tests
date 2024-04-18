@@ -1,0 +1,1 @@
+{"uuid":"310ac16e-d63a-41e1-ae74-e7533c89ccc4","name":"forward 50 emails with 16KB attachment and check the emails are moved to target email/folder","children":["91a9fd51-f117-482c-b23f-d0dddd8746bd"],"befores":[],"afters":[],"start":1709038007431,"stop":1709038011235}

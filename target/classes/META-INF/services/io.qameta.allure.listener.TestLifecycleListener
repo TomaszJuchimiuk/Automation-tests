@@ -1,0 +1,4 @@
+#com.capgemini.allure.AllureKnownIssue
+#com.capgemini.allure.AllureXrayExecutionResults
+com.capgemini.allure.AllureStepsNumbering
+#com.capgemini.allure.AllureXrayManualTestCreator

@@ -12,18 +12,18 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-@Feature("ZDI Queuing Mock Rest API")
+@Feature("Fetaure")
 @Owner("tjuchimi")
-@TmsLink("IMFVA-265")
+@TmsLink("xxx")
 @Severity(SeverityLevel.CRITICAL)
-public class ZdiQueuingMockTest extends BaseTestWebAPI {
+public class QueuingMockTest extends BaseTestWebAPI {
 
     @Test
     @Story("GET")
-    @DisplayName("GET ZDI Queuing")
-    public void zdiQueuingApi2q() throws IOException {
-        GetEnvironmentParam.IMFA_ZDI.getValue();
-        Response response = APIRequestService.getRequest(GetEnvironmentParam.IMFA_ZDI.getValue(), "/api/2q");
+    @DisplayName("GET")
+    public void get() throws IOException {
+        GetEnvironmentParam.PAGE.getValue();
+        Response response = APIRequestService.getRequest(GetEnvironmentParam.PAGE.getValue(), "/api/2q");
 
 
         Assertions.assertAll(
@@ -36,10 +36,10 @@ public class ZdiQueuingMockTest extends BaseTestWebAPI {
     @Test
 //    @Issue("21xxx")//jira bug
     @Story("POST")
-    @DisplayName("POST ZDI Queuing")
+    @DisplayName("POST")
     public void POSTjsonModel() throws IOException {
 
-        Response response = APIRequestService.postRequestWithJSON(GetEnvironmentParam.IMFA_ZDI.getValue() + "/api/2q", "src/resources/testdata/bodyApi2q.json");
+        Response response = APIRequestService.postRequestWithJSON(GetEnvironmentParam.PAGE.getValue() + "/api/2q", "src/resources/testdata/bodyApi2q.json");
         Assertions.assertAll(
                 () -> CustomAssert.assertEquals(200, response.getStatusCode()),
                 () -> CustomAssert.assertTrue(response, "OK")
@@ -49,10 +49,10 @@ public class ZdiQueuingMockTest extends BaseTestWebAPI {
     @Test
 //    @Issue("21xxx")//jira bug
     @Story("POST")
-    @DisplayName("POST ZDI Queuing with modified json")
+    @DisplayName("POST with modified json")
     public void POSTSetTheValue() throws IOException {
 
-        Response response = APIRequestService.postRequestWithModifiedJSON(GetEnvironmentParam.IMFA_ZDI.getValue() + "/api/2q", "src/resources/testdata/bodyApi2q.json", "test");
+        Response response = APIRequestService.postRequestWithModifiedJSON(GetEnvironmentParam.PAGE.getValue() + "/api/2q", "src/resources/testdata/bodyApi2q.json", "test");
         Assertions.assertAll(
                 () -> CustomAssert.assertEquals(400, response.getStatusCode()),
                 () -> CustomAssert.assertTrue(response, "Missing parameter(s) / Invalid body format")

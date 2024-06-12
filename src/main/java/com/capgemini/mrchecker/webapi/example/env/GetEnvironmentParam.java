@@ -9,13 +9,13 @@ public enum GetEnvironmentParam {
 	// Reads the environment variable from /src/resources/environments/environment.csv
 	// Name of enum must be in line with cell name in /src/resources/environments/environment.csv
 
-	IMFA_ZDI,
+	PAGE,
 	SOURCE_USER_PASSWORD,
 	SOURCE_USER,
 	TARGET_USER_PASSWORD,
 	TARGET_USER,
-	VERAKTUNG_USER_PASSWORD,
-	VERAKTUNG_USER;
+	USER_A_PASSWORD,
+	USER_A;
 	
 	private String value;
 	

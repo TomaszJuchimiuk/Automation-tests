@@ -19,7 +19,7 @@ public class AllureEnvironmentGenerator {
         if (createFile()) {
             addEnvironmentVariableToFile("Operating.System= " + System.getProperty("os.name") + " | " + System.getProperty("os.version"));
             addEnvironmentVariableToFile("Environment= " + System.getProperty("env", "ENV1"));
-            addEnvironmentVariableToFile("Base.url= " + GetEnvironmentParam.IMFA_ZDI.getValue());
+            addEnvironmentVariableToFile("Base.url= " + GetEnvironmentParam.PAGE.getValue());
 
             GitProperties gitProperties = new GitProperties();
             addEnvironmentVariableToFile("Branch=" + gitProperties.getGitBranchName());

@@ -10,16 +10,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
 
-@Feature("Load tests for IMAP")
+@Feature("Load tests for")
 @Owner("tjuchimi")
-@TmsLink("IMFVA-265")
+@TmsLink("xxx")
 @Severity(SeverityLevel.CRITICAL)
-public class ImapLoadTest extends BaseTestWebAPI {
+public class LoadTest extends BaseTestWebAPI {
 
     EmailService emailService = new EmailService();
     final String attachmentPathKowalsky = "src\\resources\\testdata\\files\\kowalski.png";
@@ -31,8 +30,8 @@ public class ImapLoadTest extends BaseTestWebAPI {
 
     @Test
     @Story("Ladtests")
-    @DisplayName("IMAP Veraktung: Send an email with attachment and check if it has been moved to InboxBackup")
-    @TmsLink("IMFVA-822")
+    @DisplayName("Send an email with attachment and check if it has been moved to InboxBackup")
+    @TmsLink("xxx")
     @ParameterizedTest
 //    @ValueSource(strings={attachmentPath100KB,attachmentPath200kB,attachmentPath500kB,attachmentPath1MB})
     @CsvSource({
@@ -40,11 +39,11 @@ public class ImapLoadTest extends BaseTestWebAPI {
             attachmentPath200kB + ", 1",
             attachmentPath500kB + ", 1",
             attachmentPath1MB + ", 1"})
-    public void loadTestVeraktung(String attachment, int emailsNumber) throws MessagingException, IOException {
+    public void loadTest(String attachment, int emailsNumber) throws MessagingException, IOException {
         emailService.setUp(GetEnvironmentParam.SOURCE_USER.getValue(), GetEnvironmentParam.SOURCE_USER_PASSWORD.getValue());
         emailService.connectServer(GetEnvironmentParam.SOURCE_USER.getValue(), GetEnvironmentParam.SOURCE_USER_PASSWORD.getValue());
-        emailService.sendEmailWithAttachment(GetEnvironmentParam.SOURCE_USER.getValue(), GetEnvironmentParam.VERAKTUNG_USER.getValue(), attachment, emailsNumber);
-        emailService.relogin(GetEnvironmentParam.VERAKTUNG_USER.getValue(), GetEnvironmentParam.VERAKTUNG_USER_PASSWORD.getValue());
+        emailService.sendEmailWithAttachment(GetEnvironmentParam.SOURCE_USER.getValue(), GetEnvironmentParam.USER_A.getValue(), attachment, emailsNumber);
+        emailService.relogin(GetEnvironmentParam.USER_A.getValue(), GetEnvironmentParam.USER_A_PASSWORD.getValue());
         Assertions.assertAll(
                 ()->CustomAssert.assertEquals(emailsNumber, emailService.readEmailsNumber("Inbox"), 5,20),
                 ()->CustomAssert.assertEquals(emailsNumber, emailService.readEmailsNumber("InboxBackup"),5, 20)
@@ -54,7 +53,7 @@ public class ImapLoadTest extends BaseTestWebAPI {
     }
 
     @Test
-    @Story("IMAP load tests")
+    @Story("load tests")
     @DisplayName("Send {emailsNumber} emails with {attachment} and check the emails are moved to target email/folder")
     @ParameterizedTest
     @CsvSource({

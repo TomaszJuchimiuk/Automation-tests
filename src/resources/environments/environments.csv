@@ -1,8 +1,8 @@
 VAR                 ,ENV1
-IMFA_ZDI, https:.....
+PAGE, https:.....
 SOURCE_USER,test_sender_api@outlook.com
 SOURCE_USER_PASSWORD,API_Test_Sender
 TARGET_USER,eakte-tests@outlook.com
 TARGET_USER_PASSWORD,eaktePassword1
-VERAKTUNG_USER,veraktung@outlook.com
-VERAKTUNG_USER_PASSWORD,imapPass1
+USER_A,veraktung@outlook.com
+USER_A_PASSWORD,imapPass1

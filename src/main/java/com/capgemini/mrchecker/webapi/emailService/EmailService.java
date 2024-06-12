@@ -82,7 +82,7 @@ public class EmailService {
     }
 
     @Step("Send new email from {sender} to {recipient} {emailsNumber} times")
-    public void cdsendEmailWithAttachment(String sender, String recipient, String attachmentPath, int emailsNumber) throws MessagingException, IOException {
+    public void sendEmailWithAttachment(String sender, String recipient, String attachmentPath, int emailsNumber) throws MessagingException, IOException {
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(sender));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
